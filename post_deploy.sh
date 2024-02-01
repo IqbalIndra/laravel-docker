@@ -2,7 +2,7 @@
 
 # update application cache
 php artisan optimize
-php artisan serve --port:80
+php artisan serve
 
 # start the application
 
