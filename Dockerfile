@@ -85,8 +85,6 @@ RUN (php artisan down) || true
 RUN echo "Generating application key..."
 RUN php artisan key:generate
 
-RUN php artisan optimize
-
 RUN php artisan route:clear
 
 RUN php artisan route:cache
