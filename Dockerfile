@@ -1,5 +1,5 @@
 # 2022 update
-FROM php:8.1-fpm
+FROM php:7.2-fpm
 
 # setup user as root
 USER root
