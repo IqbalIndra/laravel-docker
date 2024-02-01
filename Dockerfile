@@ -64,7 +64,7 @@ RUN apt install -y nodejs
 
 
 # Install nginx
-#RUN apt install -y nginx
+RUN apt install -y nginx
 
 
 COPY . /var/www/html
@@ -72,7 +72,9 @@ WORKDIR /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html
 
-RUN (php artisan down) || true
+COPY ./deploy/local.ini /usr/local/etc/php/local.ini
+
+COPY ./deploy/conf.d/nginx.conf /etc/nginx/nginx.conf
 
 RUN composer install --no-dev --optimize-autoloader
 
