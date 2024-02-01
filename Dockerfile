@@ -33,21 +33,21 @@ RUN apt update
 RUN apt install -y software-properties-common
 RUN add-apt-repository -y ppa:ondrej/php
 RUN apt update
-RUN apt install -y php7.2\
-    php7.2-cli\
-    php7.2-common\
-    php7.2-fpm\
-    php7.2-mysql\
-    php7.2-zip\
-    php7.2-gd\
-    php7.2-mbstring\
-    php7.2-curl\
-    php7.2-xml\
-    php7.2-bcmath\
-    php7.2-pdo
+RUN apt install -y php8.1\
+    php8.1-cli\
+    php8.1-common\
+    php8.1-fpm\
+    php8.1-mysql\
+    php8.1-zip\
+    php8.1-gd\
+    php8.1-mbstring\
+    php8.1-curl\
+    php8.1-xml\
+    php8.1-bcmath\
+    php8.1-pdo
 
 # Install php-fpm
-RUN apt install -y php7.2-fpm php7.2-cli
+RUN apt install -y php8.1-fpm php8.1-cli
 
 # Install composer
 RUN apt install -y curl
