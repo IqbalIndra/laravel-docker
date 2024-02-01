@@ -4,7 +4,7 @@ FROM php:7.2-fpm
 # setup user as root
 USER root
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # setup node js source will be used later to install node js
 
@@ -38,22 +38,22 @@ RUN apt-get update \
 
 
 # Copy files
-COPY . /var/www
+COPY . /var/www/html
 
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
 COPY ./deploy/conf.d/nginx.conf /etc/nginx/nginx.conf
 
-RUN chmod +rwx /var/www
+RUN chmod +rwx /var/www/html
 
-RUN chmod -R 777 /var/www
+RUN chmod -R 777 /var/www/html
 
 # setup composer and laravel
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer install --working-dir=/var/www
+RUN composer install --no-dev --optimize-autoloader
 
-RUN composer dump-autoload --working-dir=/var/www
+RUN composer dump-autoload 
 
 RUN php artisan optimize
 
