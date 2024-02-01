@@ -67,16 +67,18 @@ RUN apt install -y nodejs
 RUN apt install -y nginx
 
 
-COPY . /var/www/html
-WORKDIR /var/www/html
+COPY . /var/www
+WORKDIR /var/www
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www
 
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
 COPY ./deploy/conf.d/nginx.conf /etc/nginx/nginx.conf
 
-RUN composer install --no-dev
+RUN composer install --working-dir=/var/www
+
+RUN composer dump-autoload --working-dir=/var/www
 
 #copy .env from .env.example
 RUN composer run-script post-root-package-install
