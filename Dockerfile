@@ -27,7 +27,6 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 ENV DEBIAN_FRONTEND noninteractive
 
-USER ROOT
 
 # Install dependencies
 RUN apt update
