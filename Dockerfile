@@ -74,13 +74,13 @@ RUN chown -R www-data:www-data /var/www/html
 
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
-RUN (php artisan down) || true
-
 
 RUN composer install --no-dev --optimize-autoloader
 
 #copy .env from .env.example
 RUN composer run-script post-root-package-install
+
+RUN (php artisan down) || true
 
 RUN echo "Generating application key..."
 RUN php artisan key:generate
