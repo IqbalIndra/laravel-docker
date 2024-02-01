@@ -74,13 +74,12 @@ RUN chown -R www-data:www-data /var/www/html
 
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
+COPY ./deploy/conf.d/nginx.conf /etc/nginx/nginx.conf
 
 RUN composer install --no-dev
 
 #copy .env from .env.example
 RUN composer run-script post-root-package-install
-
-RUN (php artisan down) || true
 
 RUN echo "Generating application key..."
 RUN php artisan key:generate
