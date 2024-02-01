@@ -75,7 +75,7 @@ RUN chown -R www-data:www-data /var/www/html
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev
 
 #copy .env from .env.example
 RUN composer run-script post-root-package-install
