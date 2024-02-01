@@ -74,7 +74,8 @@ RUN chown -R www-data:www-data /var/www/html
 
 COPY ./deploy/local.ini /usr/local/etc/php/local.ini
 
-COPY ./deploy/conf.d/nginx.conf /etc/nginx/nginx.conf
+RUN (php artisan down) || true
+
 
 RUN composer install --no-dev --optimize-autoloader
 
