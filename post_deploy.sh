@@ -5,6 +5,6 @@ php artisan optimize
 
 # start the application
 
-php-fpm -D &&  nginx -g "daemon off;"
+service php7.2-fpm start &&  nginx -g "daemon off;"
 
 
